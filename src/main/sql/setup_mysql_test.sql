@@ -8,5 +8,5 @@ CREATE USER IF NOT EXISTS 'ride_share_x_test'@'localhost' IDENTIFIED BY 'ride_sh
 GRANT ALL PRIVILEGES ON ride_share_x_test_db.* TO 'ride_share_x_test'@'localhost';
 FLUSH PRIVILEGES;
 -- Granting the SELECT priviledge for the user ride_share_x_test in the db performance_schema
-GRANT SELECT ON performance_schema.* TO 'ride_share_x_test'@'localhost'
+GRANT SELECT ON performance_schema.* TO 'ride_share_x_test'@'localhost';
 FLUSH PRIVILEGES;
