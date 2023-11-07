@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+mvn archetype:generate -DgroupId=com.ridesharex -DartifactId=RideShareX -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
