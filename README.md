@@ -18,7 +18,7 @@ Java, Spring Framework, Hibernate, Google Maps API, MySQL, HTML/CSS, Javascript
 We welcome contributions from developers of all levels! Check out our [Contribution Guidelines](./docs/CONTRIBUTION.md) to get started. Whether you're passionate about frontend design, backend development, or testing, there's a place for you in our community.
 
 ## Installation and usage:
-Detailed instructions on how to install, configure and use RideShareX can be found in our [documentation](./docs/INSTALLATION).
+Detailed instructions on how to install, configure and use RideShareX can be found in our [documentation](./docs/INSTALLATION.md).
 
 ## License:
 This project is licensed under the [MIT License](./LICENSE) - see the [LICENSE](./LICENSE) file for details.
