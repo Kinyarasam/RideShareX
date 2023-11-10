@@ -26,7 +26,6 @@ public class RideController {
 
     @PostMapping
     public Ride createRide(@RequestBody Ride ride) {
-        ride.setIsActive(true);
         return rideService.createRide(ride);
     }
 

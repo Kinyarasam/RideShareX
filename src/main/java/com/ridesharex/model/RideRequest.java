@@ -27,4 +27,24 @@ public class RideRequest {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public Ride getRequestedRide() {
+        return requestedRide;
+    }
+
+    public void setRequestedRide(Ride requestedRide) {
+        this.requestedRide = requestedRide;
+    }
+
+    public User getRequestingUser() {
+        return requestingUser;
+    }
+
+    public void setRequestingUser(User requestingUser) {
+        this.requestingUser = requestingUser;
+    }
 }

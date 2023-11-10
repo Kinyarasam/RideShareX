@@ -41,6 +41,16 @@ public class Ride {
     private LocalDateTime updatedAt;
 
     // Constructors
+    public Ride() {
+    }
+
+    public Ride(String origin, String destination, LocalDateTime departureTime, int capacity, boolean isActive) {
+        this.origin = origin;
+        this.destination = destination;
+        this.departureTime = departureTime;
+        this.capacity = capacity;
+        this.isActive = isActive;
+    }
 
     // Getters
     public Long getId() {
@@ -55,8 +65,20 @@ public class Ride {
         return destination;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
     public boolean getIsActive() {
         return isActive;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
     // Setters
@@ -66,6 +88,10 @@ public class Ride {
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public void setIsActive(boolean isActive) {
