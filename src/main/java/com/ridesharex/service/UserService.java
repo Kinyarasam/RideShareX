@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ridesharex.model.RideRequest;
 import com.ridesharex.model.User;
 import com.ridesharex.repository.UserRepository;
 
@@ -46,5 +47,9 @@ public class UserService {
     // Delete a user by ID
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
+    }
+
+    public List<RideRequest> getUserRideRequests(Long userId) {
+        return null;
     }
 }

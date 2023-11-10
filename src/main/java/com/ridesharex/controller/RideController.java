@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ridesharex.model.Ride;
+import com.ridesharex.model.RideRequest;
 import com.ridesharex.service.RideService;
 
 @RestController
@@ -25,6 +26,7 @@ public class RideController {
 
     @PostMapping
     public Ride createRide(@RequestBody Ride ride) {
+        ride.setIsActive(true);
         return rideService.createRide(ride);
     }
 
@@ -36,5 +38,20 @@ public class RideController {
     @GetMapping
     public List<Ride> getAllRides() {
         return rideService.getAllRides();
+    }
+
+    @GetMapping("/{rideId}/ride-requests")
+    public List<RideRequest> getRideRequestsForRide(@PathVariable Long rideId) {
+        return rideService.getRideRequestsforRide(rideId);
+    }
+
+    @PostMapping("/{rideId}/ride-requests")
+    public RideRequest createRideRequest(@PathVariable Long rideId, @RequestBody Long userId) {
+        return rideService.createRideRequest(userId, rideId);
+    }
+
+    @GetMapping("/active")
+    public List<Ride> getActiveRides() {
+        return rideService.getActiveRides();
     }
 }
