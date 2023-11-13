@@ -1,6 +1,7 @@
 package com.ridesharex.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,9 @@ public class RideService {
     }
 
     public List<RideRequest> getRideRequestsforRide(Long rideId) {
-        return null;
+        Ride ride = rideRepository.findById(rideId).orElseThrow(() -> new IllegalArgumentException("Ride not Found"));
+
+        return rideRequestRepository.findByRequestedRide(ride);
     }
 
     public RideRequest createRideRequest(Long userId, Long rideId) {
@@ -66,6 +69,12 @@ public class RideService {
     }
 
     public List<Ride> getActiveRides() {
-        return null;
+        // Retrieve all rides from the repository
+        List<Ride> allRides = rideRepository.findAll();
+
+        // filter Rides to include only those that are active (isActive is true)
+        return allRides.stream()
+                .filter(Ride::getIsActive)
+                .collect(Collectors.toList());
     }
 }
