@@ -53,11 +53,10 @@ public class RideService {
         Ride requestedRide = rideRepository.findById(rideId)
                 .orElseThrow(() -> new IllegalArgumentException("Ride not found"));
 
-        // if
-        // (RideRequestRepository.existsByRequestingUserAndRequestedRide(requestingUser,
-        // requestedRide)) {
-        // throw new IllegalArgumentException("User already requested this ride");
-        // }
+        if (rideRequestRepository.existsByRequestingUserAndRequestedRide(requestingUser,
+                requestedRide)) {
+            throw new IllegalArgumentException("User already requested this ride");
+        }
 
         RideRequest rideRequest = new RideRequest();
         rideRequest.setRequestingUser(requestingUser);
