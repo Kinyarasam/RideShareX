@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
+cd RideShareX
 mvn clean install
 mvn spring-boot:run

@@ -15,7 +15,14 @@
     <version>2.5.5</version> <!-- Use the latest stable version -->
   </parent>
 
+  
   <dependencies>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -44,6 +51,7 @@
       <version>2.2</version> <!-- You can specify a different version if needed -->
     </dependency>
   </dependencies>
+
 
   <!-- Maven Plugin Configuration for Spring Boot -->
   <build>
