@@ -3,6 +3,8 @@ package com.ridesharex.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,18 +33,25 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User createdUser = userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable Long userId) {
-        return userService.getUserById(userId);
+    public ResponseEntity<User> getUser(@PathVariable Long userId) {
+        User user = userService.getUserById(userId);
+        return ResponseEntity.ok(user);
     }
 
     @PutMapping("/{userId}")
-    public User updateUser(@PathVariable Long userId, @RequestBody User updateUser) {
-        return userService.updateUser(userId, updateUser);
+    public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User updateUser) {
+        if (!userId.equals(updateUser.getId())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+        User updatedUser = userService.updateUser(userId, updateUser);
+        return ResponseEntity.ok(updatedUser);
     }
 
     @DeleteMapping("/{userId}")
