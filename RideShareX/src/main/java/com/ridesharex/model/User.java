@@ -45,9 +45,9 @@ public class User {
         return username;
     }
 
-    private String getPassword() {
-        return password;
-    }
+    // private String getPassword() {
+    // return password;
+    // }
 
     public String getEmail() {
         return email;
