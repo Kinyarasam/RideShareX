@@ -3,3 +3,8 @@ spring.datasource.username=db_username
 spring.datasource.password=db_password
 spring.jpa.show-sql=true
 spring.jpa.hibernate.ddl-auto=update
+
+security.jwt.secret=YourSecretCode
+security.jwt.expiration=3600000
+security.jwt.header=Header
+security.jwt.prefix=Prefix
