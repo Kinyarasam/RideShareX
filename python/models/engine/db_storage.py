@@ -5,6 +5,7 @@ Contains the class DBStorage
 from models.base_model import Base
 from os import getenv
 from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
 from models.user import User
 from dotenv import load_dotenv
 
@@ -78,6 +79,9 @@ class DBStorage:
         Reloads data from the database
         """
         Base.metadata.create_all(self._engine)
+        sess_factory = sessionmaker(bind=self._engine, expire_on_commit=False)
+        Session = scoped_session(sess_factory)
+        self._session = Session
 
     def close(self):
         """
