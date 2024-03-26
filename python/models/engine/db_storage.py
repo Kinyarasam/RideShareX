@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()  # Load the enviroment variables
-classes = {}
+classes = {"User": User}
 
 
 class DBStorage:
