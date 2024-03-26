@@ -3,7 +3,8 @@
 Contains class Ride
 """
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, DateTime, Integer, Boolean
+from sqlalchemy.orm import relationship
 
 
 class Ride(BaseModel, Base):
@@ -13,6 +14,11 @@ class Ride(BaseModel, Base):
     __tablename__ = "ride"
 
     plate_no = Column(String(60), nullable=False)
+    capacity = Column(Integer)
+    isActive = Column(Boolean, nullable=False, default=False)
+    ride_requests = relationship('RideRequest',
+                                backref="ride",
+                                cascade="all, delete, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         """

@@ -4,6 +4,7 @@ Contains class User
 """
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
 from hashlib import md5
 
 
@@ -17,6 +18,8 @@ class User(BaseModel, Base):
     password = Column(String(128))
     first_name = Column(String(128), nullable=False)
     last_name = Column(String(128), nullable=False)
+    ride_requests = relationship("RideRequest",
+                                 backref="user")
 
     def __init__(self, *args, **kwargs):
         """
