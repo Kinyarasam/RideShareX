@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import base64
+# from utils.redis_client import RedisClient
 from models.user import User
 from models.ride import Ride
 from models.ride_request import RideRequest
@@ -30,3 +32,15 @@ ride_request = RideRequest(ride_id=ride.id, user_id=user.id,
 print("\n-----\n")
 print(ride_request.to_dict())
 ride_request.save()
+
+
+# r = RedisClient()
+# print(r.isAlive())
+
+print("\n-----\n")
+print(User.find(email=email, password=password))
+
+auth_str = '{}:{}'.format(email, password)
+encoded_str = base64.b64encode(auth_str.encode('utf-8')).decode('utf-8')
+print("\n-----\n")
+print(encoded_str)   # dGVzdEB0ZXN0LmNvbTp0ZXN0IENsZWFyIFBXRA==

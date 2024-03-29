@@ -2,6 +2,7 @@
 """
 Contains class User
 """
+import models
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
@@ -12,9 +13,9 @@ class User(BaseModel, Base):
     """
     Representation of a user
     """
-    __tablename__ = "user"
+    __tablename__ = "users"
 
-    email = Column(String(128), nullable=False)
+    email = Column(String(128), nullable=False, unique=True)
     password = Column(String(128))
     first_name = Column(String(128), nullable=False)
     last_name = Column(String(128), nullable=False)
@@ -34,3 +35,13 @@ class User(BaseModel, Base):
         if __name == "password":
             __value = md5(__value.encode()).hexdigest()
         return super().__setattr__(__name, __value)
+    
+    @classmethod
+    def find(cls, *args, **kwargs):
+        """
+        Get a record matching the details provided
+        """
+        if "password" in kwargs.keys():
+            kwargs["password"] = md5(kwargs["password"].encode()).hexdigest()
+
+        return models.storage.find(cls, **kwargs)

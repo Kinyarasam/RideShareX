@@ -26,6 +26,11 @@ def get_users(user_id):
     """
     Retrieves an user
     """
+    if user_id == "me":
+        if request.current_user is None:
+            abort(404)
+        user = request.current_user
+        return make_response(jsonify(user.to_dict()), 200)
     user = models.storage.get(User, user_id)
     if not user:
         abort(404)

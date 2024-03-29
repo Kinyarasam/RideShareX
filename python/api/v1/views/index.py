@@ -3,6 +3,9 @@
 Index
 """
 import models
+from models.user import User
+from models.ride import Ride
+from models.ride_request import RideRequest
 from api.v1.views import app_views
 from flask import make_response, jsonify
 
@@ -20,8 +23,8 @@ def stats():
     """
     Retrieves the number of each objects by type
     """
-    classes = []
-    names = []
+    classes = [User, Ride, RideRequest]
+    names = ['users', 'rides', 'ride requests']
 
     num_objs = {}
     for i in range(len(classes)):

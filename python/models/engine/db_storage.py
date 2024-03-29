@@ -42,8 +42,8 @@ class DBStorage:
                                          RIDESHAREX_MYSQL_DB
                                      ))
         
-        if RIDESHAREX_ENV == "test":
-            Base.metadata.drop_all(self._engine)
+        # if RIDESHAREX_ENV == "test":
+        #     Base.metadata.drop_all(self._engine)
 
     def all(self, cls=None):
         """
@@ -94,7 +94,7 @@ class DBStorage:
 
     def get(self, cls, id):
         """
-        Returns the object based onn the class name and it's ID, or
+        Returns the object based on the class name and it's ID, or
         None if not found
         """
         if cls not in classes.values():
@@ -105,6 +105,15 @@ class DBStorage:
             if value.id == id:
                 return value
         return None
+    
+    def find(self, cls, *args, **kwargs):
+        """
+        Returns a record matching parameters
+        """
+        if cls not in classes.values():
+            return None
+        
+        return self._session.query(cls).filter_by(**kwargs).first()
 
     def count(self, cls=None):
         """

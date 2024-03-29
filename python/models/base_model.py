@@ -82,3 +82,10 @@ class BaseModel:
         Delete the current instance from storage.
         """
         models.storage.delete(self)
+
+    @classmethod
+    def find(cls, *args, **kwargs):
+        """
+        Get a record matching the details provided
+        """
+        return models.storage.find(cls, **kwargs)

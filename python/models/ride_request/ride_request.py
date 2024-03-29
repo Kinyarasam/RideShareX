@@ -10,10 +10,10 @@ class RideRequest(BaseModel, Base):
     """
     Representation of a ride request
     """
-    __tablename__ = "ride_request"
+    __tablename__ = "ride_requests"
 
-    ride_id = Column(String(60), ForeignKey("ride.id"), nullable=False)
-    user_id = Column(String(60), ForeignKey("user.id"), nullable=False)
+    ride_id = Column(String(60), ForeignKey("rides.id"), nullable=False)
+    user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
     origin = Column(String(60), nullable=False)
     destination = Column(String(60), nullable=False)
     departure_at = Column(DateTime)

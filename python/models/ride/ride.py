@@ -11,9 +11,9 @@ class Ride(BaseModel, Base):
     """
     Representation of a ride
     """
-    __tablename__ = "ride"
+    __tablename__ = "rides"
 
-    plate_no = Column(String(60), nullable=False)
+    plate_no = Column(String(60), nullable=False, unique=True)
     capacity = Column(Integer)
     isActive = Column(Boolean, nullable=False, default=False)
     ride_requests = relationship('RideRequest',

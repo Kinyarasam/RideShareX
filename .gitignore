@@ -53,3 +53,6 @@ target/
 *yarn-debug.log*
 *yarn-error.log*
 
+__pycache__
+venv
+*.env
