@@ -31,3 +31,25 @@ def post_requests(ride_id):
     """
     Create a ride request
     """
+    user = request.current_user
+    if not user:
+        abort(403)
+    if not request.get_json():
+        abort(400, description="Not a JSON")
+    if "origin" not in request.get_json():
+        abort(400, description="missing origin")
+    if "destination" not in request.get_json():
+        abort(400, description="missing destination")
+    instance = RideRequest(**request.get_json())
+    instance.save()
+    return make_response(jsonify(instance.to_dict()), 201)
+
+
+@app_views.route("/rides/<ride_id>/requests/<request_id>")
+def get_requests(ride_id, request_id):
+    """
+    Retrieve a ride request
+    """
+    
+
+

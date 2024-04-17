@@ -1,3 +1,6 @@
+- [java](./INSTALLATION.md)
+- [python](./python/INSTALLATION.md)
+
 # Installation Guidelines
 
 Follow these steps to install and set up RideShareX on your local machine:
